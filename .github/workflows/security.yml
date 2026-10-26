@@ -22,7 +22,7 @@ jobs:
         submodules: false
         persist-credentials: false
     - name: Install cargo-audit
-      uses: taiki-e/install-action@f7e5d7c961414b23f5b25b2da9294395d08513ad
+      uses: taiki-e/install-action@1e29709c0ec63babbe8f266397a465f29a825f91
       with:
         tool: cargo-audit
     - name: Audit the committed lockfile
@@ -84,12 +84,12 @@ jobs:
         submodules: recursive
         persist-credentials: false
     - name: Install Foundry
-      uses: foundry-rs/foundry-toolchain@908c540300062bd5a7e473851cdb4282204cee09
+      uses: foundry-rs/foundry-toolchain@dba66c27052e63476d886f22216e119ba7e615bf
       with:
         version: ${{ env.FOUNDRY_VERSION }}
         cache: false
     - name: Set up Python
-      uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+      uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
       with:
         python-version: '3.11'
     - name: Install Slither

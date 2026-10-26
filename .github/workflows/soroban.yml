@@ -20,7 +20,7 @@ jobs:
         working-directory: soroban
     steps:
     - name: Check out
-      uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
       with:
         submodules: false
         persist-credentials: false
@@ -35,7 +35,7 @@ jobs:
 
         '
     - name: Restore the cargo cache
-      uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6
+      uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0
       with:
         workspaces: soroban -> target
         shared-key: soroban
@@ -47,7 +47,7 @@ jobs:
       run: cargo test --locked --workspace
     - name: Restore the pinned stellar-cli
       id: stellar-cli-cache
-      uses: actions/cache@caa296126883cff596d87d8935842f9db880ef25
+      uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
       with:
         path: ~/.local/bin/stellar
         key: stellar-cli-${{ env.STELLAR_CLI_VERSION }}-x86_64-unknown-linux-gnu
@@ -92,7 +92,7 @@ jobs:
         \ one.\" \\\n    >> \"$GITHUB_STEP_SUMMARY\"\nfi\n"
     - name: Keep the wasm for the run
       if: success()
-      uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
       with:
         name: soroban-wasm-${{ github.sha }}
         path: soroban/target/wasm32v1-none/release/hyperion_*.wasm
